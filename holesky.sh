@@ -89,17 +89,13 @@ docker compose up -d
 # Получаем IP-адрес
 IP_ADDR=$(hostname -I | awk '{print $1}')
 
-# Выводим итоговую информацию
-cat << EOF
-
-
-=== УСТАНОВКА ЗАВЕРШЕНА ===
-
-RPC endpoints:
-holesky: http://${IP_ADDR}:8544
-Beacon: http://${IP_ADDR}:5053
-
-Команды для логов:
-docker logs -f ethereum-execution-holesky
-docker logs -f ethereum-consensus-holesky
-EOF
+# Выводим итоговую информацию в нужном формате
+echo -e "\n\n=== УСТАНОВКА ЗАВЕРШЕНА ==="
+echo -e "\nRPC endpoints:"
+echo "holesky:"
+echo "http://${IP_ADDR}:8544"
+echo "Beacon:"
+echo "http://${IP_ADDR}:5053"
+echo -e "\nКоманды для логов:"
+echo "docker logs -f ethereum-execution-holesky"
+echo "docker logs -f ethereum-consensus-holesky"
